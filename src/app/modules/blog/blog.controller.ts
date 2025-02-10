@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express';
-import { ProjectServices } from './project.service';
+import { BlogServices } from './blog.service';
 
-const createProject = async (req: Request, res: Response) => {
+const createBlog = async (req: Request, res: Response) => {
   try {
-    const project = req.body;
+    const blog = req.body;
 
     // will call service func to send this data
-    const result = await ProjectServices.createProjectIntoDB(project);
+    const result = await BlogServices.createBlogIntoDB(blog);
 
     // send response
     res.status(200).json({
       success: true,
-      message: 'Project is added succesfull',
+      message: 'Blog is created succesfull',
       data: result,
     });
   } catch (error: any) {
@@ -24,15 +24,15 @@ const createProject = async (req: Request, res: Response) => {
   }
 };
 
-const getAllProject = async (req: Request, res: Response) => {
+const getAllBlog = async (req: Request, res: Response) => {
   try {
     // will call service func to send this data
-    const result = await ProjectServices.getAllProjectFromDB();
+    const result = await BlogServices.getAllBlogFromDB();
 
     // send response
     res.status(200).json({
       success: true,
-      message: 'Projects get succesfully',
+      message: 'Blog get succesfully',
       data: result,
     });
   } catch (error) {
@@ -44,17 +44,17 @@ const getAllProject = async (req: Request, res: Response) => {
   }
 };
 
-const getProject = async (req: Request, res: Response) => {
+const getBlog = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
 
     // will call service func to send this data
-    const result = await ProjectServices.getProjectFromDB(id);
+    const result = await BlogServices.getBlogFromDB(id);
 
     // send response
     res.status(200).json({
       success: true,
-      message: 'Project get succesfully',
+      message: 'Blog get succesfully',
       data: result,
     });
   } catch (error) {
@@ -68,17 +68,17 @@ const getProject = async (req: Request, res: Response) => {
 
 // student delete
 
-const deleteProject = async (req: Request, res: Response) => {
+const deleteBlog = async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
+    const { id } = req.params;
 
     // will call service func to send this data
-    const result = await ProjectServices.deleteProjectFromDB(id);
+    const result = await BlogServices.deleteBlogFromDB(id);
 
     // send response
     res.status(200).json({
       success: true,
-      message: 'Project deleted succesful',
+      message: 'Blog deleted succesful',
       data: result,
     });
   } catch (error) {
@@ -90,9 +90,9 @@ const deleteProject = async (req: Request, res: Response) => {
   }
 };
 
-export const projectController = {
-  createProject,
-  getAllProject,
-  getProject,
-  deleteProject,
+export const blogController = {
+  createBlog,
+  getAllBlog,
+  getBlog,
+  deleteBlog,
 };

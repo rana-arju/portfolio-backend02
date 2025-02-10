@@ -1,12 +1,12 @@
 export type IProject = {
   title: string;
   images: string[];
-  tech: string[];
+  technologies: string[];
   frontend: string;
-  backend: string;
-  details: string;
+  server: string;
+  description: string;
   live: string;
-  deadline: string;
+  deadline?: string;
   isDeleted: boolean;
   priority: 'low' | 'medium' | 'high';
 };

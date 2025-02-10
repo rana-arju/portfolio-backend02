@@ -8,17 +8,17 @@ const projectSchema = new mongoose_1.Schema({
         required: [true, 'Title is required.'],
     },
     images: { type: [String], required: true },
-    tech: {
+    technologies: {
         type: [String],
         required: [true, 'Technology is required.'],
     },
     frontend: {
         type: String,
     },
-    backend: {
+    server: {
         type: String,
     },
-    details: {
+    description: {
         type: String,
     },
     live: {

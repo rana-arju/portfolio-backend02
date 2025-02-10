@@ -9,17 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.projectController = void 0;
-const project_service_1 = require("./project.service");
-const createProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.blogController = void 0;
+const blog_service_1 = require("./blog.service");
+const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const project = req.body;
+        const blog = req.body;
         // will call service func to send this data
-        const result = yield project_service_1.ProjectServices.createProjectIntoDB(project);
+        const result = yield blog_service_1.BlogServices.createBlogIntoDB(blog);
         // send response
         res.status(200).json({
             success: true,
-            message: 'Project is added succesfull',
+            message: 'Blog is created succesfull',
             data: result,
         });
     }
@@ -31,14 +31,14 @@ const createProject = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         });
     }
 });
-const getAllProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getAllBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // will call service func to send this data
-        const result = yield project_service_1.ProjectServices.getAllProjectFromDB();
+        const result = yield blog_service_1.BlogServices.getAllBlogFromDB();
         // send response
         res.status(200).json({
             success: true,
-            message: 'Projects get succesfully',
+            message: 'Blog get succesfully',
             data: result,
         });
     }
@@ -50,15 +50,15 @@ const getAllProject = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         });
     }
 });
-const getProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.id;
         // will call service func to send this data
-        const result = yield project_service_1.ProjectServices.getProjectFromDB(id);
+        const result = yield blog_service_1.BlogServices.getBlogFromDB(id);
         // send response
         res.status(200).json({
             success: true,
-            message: 'Project get succesfully',
+            message: 'Blog get succesfully',
             data: result,
         });
     }
@@ -71,15 +71,15 @@ const getProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 // student delete
-const deleteProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const id = req.params.id;
+        const { id } = req.params;
         // will call service func to send this data
-        const result = yield project_service_1.ProjectServices.deleteProjectFromDB(id);
+        const result = yield blog_service_1.BlogServices.deleteBlogFromDB(id);
         // send response
         res.status(200).json({
             success: true,
-            message: 'Project deleted succesful',
+            message: 'Blog deleted succesful',
             data: result,
         });
     }
@@ -91,9 +91,9 @@ const deleteProject = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         });
     }
 });
-exports.projectController = {
-    createProject,
-    getAllProject,
-    getProject,
-    deleteProject,
+exports.blogController = {
+    createBlog,
+    getAllBlog,
+    getBlog,
+    deleteBlog,
 };

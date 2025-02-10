@@ -15,16 +15,16 @@ const projectValidationSchema = zod_1.z.object({
             required_error: 'Proejct Screnshots must be provided and must be a string',
         })
             .array(),
-        tech: zod_1.z
+        technologies: zod_1.z
             .string({
             required_error: 'Which technologys use this project?',
         })
             .array(),
         frontend: zod_1.z.string(),
-        backend: zod_1.z.string(),
-        details: zod_1.z.string(),
+        server: zod_1.z.string(),
+        description: zod_1.z.string(),
         live: zod_1.z.string(),
-        deadline: zod_1.z.string(),
+        deadline: zod_1.z.string().optional(),
     }),
 });
 exports.projectValidation = {

@@ -8,7 +8,7 @@ const projectSchema = new Schema<IProject>(
       required: [true, 'Title is required.'],
     },
     images: { type: [String], required: true },
-    tech: {
+    technologies: {
       type: [String],
 
       required: [true, 'Technology is required.'],
@@ -16,10 +16,10 @@ const projectSchema = new Schema<IProject>(
     frontend: {
       type: String,
     },
-    backend: {
+    server: {
       type: String,
     },
-    details: {
+    description: {
       type: String,
     },
     live: {
