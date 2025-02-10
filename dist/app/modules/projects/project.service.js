@@ -15,6 +15,16 @@ const createProjectIntoDB = (ProjectData) => __awaiter(void 0, void 0, void 0, f
     const result = yield project_schema_1.Project.create(ProjectData);
     return result;
 });
+const updateProjectIntoDB = (payload, id) => __awaiter(void 0, void 0, void 0, function* () {
+    const projectExist = yield project_schema_1.Project.findById(id);
+    if (!projectExist) {
+        throw new Error('This project not exist!');
+    }
+    const result = yield project_schema_1.Project.findByIdAndUpdate(id, payload, {
+        new: true,
+    });
+    return result;
+});
 const getAllProjectFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield project_schema_1.Project.find();
     return result;
@@ -32,4 +42,5 @@ exports.ProjectServices = {
     getAllProjectFromDB,
     getProjectFromDB,
     deleteProjectFromDB,
+    updateProjectIntoDB,
 };

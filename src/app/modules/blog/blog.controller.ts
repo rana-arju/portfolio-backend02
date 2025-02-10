@@ -23,7 +23,28 @@ const createBlog = async (req: Request, res: Response) => {
     });
   }
 };
+const updateBlog = async (req: Request, res: Response) => {
+  try {
+    const data = req.body;
+    const { id } = req.params;
 
+    // will call service func to send this data
+    const result = await BlogServices.updateBlogntoDB(data, id);
+
+    // send response
+    res.status(200).json({
+      success: true,
+      message: 'Blog is update succesfull',
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message || 'Someting went wrong',
+      error,
+    });
+  }
+};
 const getAllBlog = async (req: Request, res: Response) => {
   try {
     // will call service func to send this data
@@ -95,4 +116,5 @@ export const blogController = {
   getAllBlog,
   getBlog,
   deleteBlog,
+  updateBlog,
 };

@@ -10,9 +10,12 @@ const blogValidationSchema = zod_1.z.object({
         })
             .min(4)
             .max(50),
-        image: zod_1.z
-            .string({
+        image: zod_1.z.string({
             required_error: 'Blog image added',
+        }),
+        tags: zod_1.z
+            .string({
+            required_error: 'Tags required',
         })
             .array(),
         content: zod_1.z

@@ -12,4 +12,5 @@ router.post('/', blog_controller_1.blogController.createBlog);
 router.get('/', blog_controller_1.blogController.getAllBlog);
 router.get('/:id', blog_controller_1.blogController.getBlog);
 router.delete('/:id', blog_controller_1.blogController.deleteBlog);
+router.patch('/:id', blog_controller_1.blogController.updateBlog);
 exports.BlogRoutes = router;

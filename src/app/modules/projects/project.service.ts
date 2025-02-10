@@ -6,13 +6,24 @@ const createProjectIntoDB = async (ProjectData: IProject) => {
 
   return result;
 };
+const updateProjectIntoDB = async (payload: Partial<IProject>, id: string) => {
+  const projectExist = await Project.findById(id);
+  if (!projectExist) {
+    throw new Error('This project not exist!');
+  }
+  const result = await Project.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
+
+  return result;
+};
 
 const getAllProjectFromDB = async () => {
-  const result = await Project.find();
+  const result = await Project.find();  
   return result;
 };
 const getProjectFromDB = async (id: string) => {
-  const result = await Project.findOne({_id:id});
+  const result = await Project.findOne({ _id: id });
 
   return result;
 };
@@ -27,4 +38,5 @@ export const ProjectServices = {
   getAllProjectFromDB,
   getProjectFromDB,
   deleteProjectFromDB,
+  updateProjectIntoDB,
 };

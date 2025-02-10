@@ -11,6 +11,11 @@ const blogSchema = new Schema<IBlog>(
       type: String,
       required: [true, 'Content is required.'],
     },
+    tags: {
+      type: [String],
+      required: [true, "Tags required!"]
+
+    },
     image: { type: String, required: true },
   },
   { timestamps: true },

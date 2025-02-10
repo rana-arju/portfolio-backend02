@@ -23,6 +23,30 @@ const createProject = async (req: Request, res: Response) => {
     });
   }
 };
+const updateProject = async (req: Request, res: Response) => {
+  try {
+    const data = req.body;
+    const { id } = req.params;
+
+    console.log(data, id);
+
+    // will call service func to send this data
+    const result = await ProjectServices.updateProjectIntoDB(data, id);
+
+    // send response
+    res.status(200).json({
+      success: true,
+      message: 'Project is update succesfull',
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message || 'Someting went wrong',
+      error,
+    });
+  }
+};
 
 const getAllProject = async (req: Request, res: Response) => {
   try {
@@ -95,4 +119,5 @@ export const projectController = {
   getAllProject,
   getProject,
   deleteProject,
+  updateProject,
 };

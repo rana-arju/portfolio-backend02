@@ -9,9 +9,12 @@ const blogValidationSchema = z.object({
       .min(4)
       .max(50),
 
-    image: z
+    image: z.string({
+      required_error: 'Blog image added',
+    }),
+    tags: z
       .string({
-        required_error: 'Blog image added',
+        required_error: 'Tags required',
       })
       .array(),
     content: z

@@ -15,6 +15,16 @@ const createBlogIntoDB = (ProjectData) => __awaiter(void 0, void 0, void 0, func
     const result = yield blog_schema_1.Blog.create(ProjectData);
     return result;
 });
+const updateBlogntoDB = (payload, id) => __awaiter(void 0, void 0, void 0, function* () {
+    const blogExist = yield blog_schema_1.Blog.findById(id);
+    if (!blogExist) {
+        throw new Error('This blog not exist!');
+    }
+    const result = yield blog_schema_1.Blog.findByIdAndUpdate(id, payload, {
+        new: true,
+    });
+    return result;
+});
 const getAllBlogFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield blog_schema_1.Blog.find();
     return result;
@@ -24,7 +34,7 @@ const getBlogFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 const deleteBlogFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield blog_schema_1.Blog.updateOne({ _id: id }, { isDeleted: true });
+    const result = yield blog_schema_1.Blog.deleteOne({ _id: id });
     return result;
 });
 exports.BlogServices = {
@@ -32,4 +42,5 @@ exports.BlogServices = {
     getAllBlogFromDB,
     getBlogFromDB,
     deleteBlogFromDB,
+    updateBlogntoDB,
 };

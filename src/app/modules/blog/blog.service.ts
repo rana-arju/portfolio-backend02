@@ -6,7 +6,17 @@ const createBlogIntoDB = async (ProjectData: IBlog) => {
 
   return result;
 };
+const updateBlogntoDB = async (payload: Partial<IBlog>, id: string) => {
+  const blogExist = await Blog.findById(id);
+  if (!blogExist) {
+    throw new Error('This blog not exist!');
+  }
+  const result = await Blog.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
 
+  return result;
+};
 const getAllBlogFromDB = async () => {
   const result = await Blog.find();
   return result;
@@ -17,7 +27,7 @@ const getBlogFromDB = async (id: string) => {
   return result;
 };
 const deleteBlogFromDB = async (id: string) => {
-  const result = await Blog.updateOne({ _id: id }, { isDeleted: true });
+  const result = await Blog.deleteOne({ _id: id });
 
   return result;
 };
@@ -27,4 +37,5 @@ export const BlogServices = {
   getAllBlogFromDB,
   getBlogFromDB,
   deleteBlogFromDB,
+  updateBlogntoDB,
 };

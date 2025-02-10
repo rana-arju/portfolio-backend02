@@ -31,6 +31,28 @@ const createProject = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         });
     }
 });
+const updateProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = req.body;
+        const { id } = req.params;
+        console.log(data, id);
+        // will call service func to send this data
+        const result = yield project_service_1.ProjectServices.updateProjectIntoDB(data, id);
+        // send response
+        res.status(200).json({
+            success: true,
+            message: 'Project is update succesfull',
+            data: result,
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message || 'Someting went wrong',
+            error,
+        });
+    }
+});
 const getAllProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // will call service func to send this data
@@ -96,4 +118,5 @@ exports.projectController = {
     getAllProject,
     getProject,
     deleteProject,
+    updateProject,
 };
