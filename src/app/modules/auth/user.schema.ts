@@ -6,6 +6,11 @@ import validator from 'validator';
 
 const userSchema = new Schema<IUser, UserModel>(
   {
+    name: {
+      type: String,
+      required: [true, "Name is required"]
+
+    },
     email: {
       type: String,
       trim: true,
@@ -17,17 +22,12 @@ const userSchema = new Schema<IUser, UserModel>(
       },
     },
     password: { type: String, required: true, select: 0 },
-    needsPasswordChange: { type: Boolean, default: true },
-    status: {
-      type: String,
-      enum: ['in-progress', 'blocked'],
-      default: 'in-progress',
-    },
+
     role: {
       type: String,
-      enum: ['superAdmin'],
+      enum: ['superAdmin',"user","admin"],
+      default: "user"
     },
-    isDeleted: { type: Boolean, default: false },
   },
   { timestamps: true },
 );

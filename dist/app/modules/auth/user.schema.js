@@ -18,6 +18,10 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const config_1 = __importDefault(require("../../config"));
 const validator_1 = __importDefault(require("validator"));
 const userSchema = new mongoose_1.Schema({
+    name: {
+        type: String,
+        required: [true, "Name is required"]
+    },
     email: {
         type: String,
         trim: true,
@@ -29,17 +33,11 @@ const userSchema = new mongoose_1.Schema({
         },
     },
     password: { type: String, required: true, select: 0 },
-    needsPasswordChange: { type: Boolean, default: true },
-    status: {
-        type: String,
-        enum: ['in-progress', 'blocked'],
-        default: 'in-progress',
-    },
     role: {
         type: String,
-        enum: ['superAdmin'],
+        enum: ['superAdmin', "user", "admin"],
+        default: "user"
     },
-    isDeleted: { type: Boolean, default: false },
 }, { timestamps: true });
 userSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function* () {
