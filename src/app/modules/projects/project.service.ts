@@ -28,7 +28,7 @@ const getProjectFromDB = async (id: string) => {
   return result;
 };
 const deleteProjectFromDB = async (id: string) => {
-  const result = await Project.updateOne({ _id: id }, { isDeleted: true });
+  const result = await Project.deleteOne({ _id: id });
 
   return result;
 };

@@ -1,11 +1,12 @@
-import { User } from "../modules/auth/user.schema";
+import { User } from '../modules/auth/user.schema';
 
 const superUser = {
   email: 'ranaarju20@gmail.com',
-  password: "r@n@&@rju2@25",
+  name: 'Rana Arju',
+  password: 'r@n@&@rju2@25',
   needsPasswordChange: false,
   status: 'in-progress',
-  role: "superAdmin",
+  role: 'superAdmin',
   isDeleted: false,
 };
 

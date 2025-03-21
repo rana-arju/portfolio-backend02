@@ -2,10 +2,10 @@
 import { Model } from 'mongoose';
 
 export interface IUser {
-  name?: string
+  name?: string;
   email: string;
   password: string;
-  role: 'superAdmin' | 'user' | 'admin';
+  role: 'admin' | 'superAdmin';
 }
 export interface UserModel extends Model<IUser> {
   isPasswordMatched(

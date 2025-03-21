@@ -34,7 +34,7 @@ const getProjectFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () 
     return result;
 });
 const deleteProjectFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield project_schema_1.Project.updateOne({ _id: id }, { isDeleted: true });
+    const result = yield project_schema_1.Project.deleteOne({ _id: id });
     return result;
 });
 exports.ProjectServices = {

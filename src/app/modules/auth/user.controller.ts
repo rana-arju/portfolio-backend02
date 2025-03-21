@@ -5,6 +5,8 @@ import { UserServices } from './user.service';
 const registration = async (req: Request, res: Response) => {
   try {
     const userData = req.body;
+    console.log(userData);
+    
 
     // will call service func to send this data
     const result = await UserServices.userRegistrationIntoDB(userData);
@@ -26,6 +28,8 @@ const registration = async (req: Request, res: Response) => {
 const login = async (req: Request, res: Response) => {
   try {
     const userData = req.body;
+
+    
 
     // will call service func to send this data
     const result = await UserServices.userLoginIntoDB(userData);

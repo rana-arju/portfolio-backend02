@@ -8,8 +8,7 @@ const userSchema = new Schema<IUser, UserModel>(
   {
     name: {
       type: String,
-      required: [true, "Name is required"]
-
+      required: [true, 'Name is required'],
     },
     email: {
       type: String,
@@ -25,8 +24,8 @@ const userSchema = new Schema<IUser, UserModel>(
 
     role: {
       type: String,
-      enum: ['superAdmin',"user","admin"],
-      default: "user"
+      enum: ['admin', 'superAdmin'],
+      default: 'admin',
     },
   },
   { timestamps: true },

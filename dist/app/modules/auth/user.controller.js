@@ -14,6 +14,7 @@ const user_service_1 = require("./user.service");
 const registration = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const userData = req.body;
+        console.log(userData);
         // will call service func to send this data
         const result = yield user_service_1.UserServices.userRegistrationIntoDB(userData);
         // send response

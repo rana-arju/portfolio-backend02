@@ -20,7 +20,7 @@ const validator_1 = __importDefault(require("validator"));
 const userSchema = new mongoose_1.Schema({
     name: {
         type: String,
-        required: [true, "Name is required"]
+        required: [true, 'Name is required'],
     },
     email: {
         type: String,
@@ -35,8 +35,8 @@ const userSchema = new mongoose_1.Schema({
     password: { type: String, required: true, select: 0 },
     role: {
         type: String,
-        enum: ['superAdmin', "user", "admin"],
-        default: "user"
+        enum: ['admin', 'superAdmin'],
+        default: 'admin',
     },
 }, { timestamps: true });
 userSchema.pre('save', function (next) {

@@ -12,10 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const user_schema_1 = require("../modules/auth/user.schema");
 const superUser = {
     email: 'ranaarju20@gmail.com',
-    password: "r@n@&@rju2@25",
+    name: 'Rana Arju',
+    password: 'r@n@&@rju2@25',
     needsPasswordChange: false,
     status: 'in-progress',
-    role: "superAdmin",
+    role: 'superAdmin',
     isDeleted: false,
 };
 const seedSuperAdmin = () => __awaiter(void 0, void 0, void 0, function* () {
